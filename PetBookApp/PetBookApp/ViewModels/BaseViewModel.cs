@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Navigation.TabbedPages;
+using PetBookApp.Services;
+using PetBookApp.Helpers;
 
 namespace PetBookApp.ViewModels
 {
@@ -16,6 +18,7 @@ namespace PetBookApp.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigationService _navigationService;
+        IApiService<IWeatherApi> getWeatherApi = new ApiService<IWeatherApi>(Config.ApiUrl);
         private bool _isBusy;
 
         public bool IsBusy {

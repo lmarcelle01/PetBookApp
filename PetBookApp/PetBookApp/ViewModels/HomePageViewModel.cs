@@ -1,8 +1,10 @@
 ﻿using PetBookApp.Helpers;
+using PetBookApp.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Navigation.TabbedPages;
 using Prism.Services;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +15,7 @@ namespace PetBookApp.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public event EventHandler IsActiveChanged;
+        public City city { get; set; }
 
         protected IPageDialogService _dialogService;
 
@@ -24,6 +27,8 @@ namespace PetBookApp.ViewModels
         }
 
         public DelegateCommand DisplayPostActionSheetCommand { get; set; }
+
+        public DelegateCommand FetchWeather { get; set; }
 
         protected virtual void RaiseIsActiveChanged()
         {
@@ -37,12 +42,26 @@ namespace PetBookApp.ViewModels
                 await DisplayPostActionSheet();
 
             });
+
+            FetchWeather = new DelegateCommand(async () =>
+            {
+                await GetWeather(city.Name);
+            });
+
+            
         }
 
-        async void SelectTab(object parameters)
+        async Task GetWeather(string city)
         {
-            var result = await base.SelectTab("PROFILE");
+            var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
+            var weather = await apiResponse.GetWeather(city);
+            //return weather;
         }
+
+        //async void SelectTab(object parameters)
+        //{
+        //    var result = await base.SelectTab("PROFILE");
+        //}
 
         async Task DisplayPostActionSheet()
         {
