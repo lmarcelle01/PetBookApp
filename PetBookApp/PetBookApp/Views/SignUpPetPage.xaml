@@ -12,7 +12,7 @@
                 <Entry Placeholder="Age"/>
                 <Entry Placeholder="Gender"/>
                 <Entry Placeholder="About" />
-                <Button Text="Sign up"/>
+                <Button Text="Sign up" Command="{Binding GoToHomeTabbedCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
