@@ -8,7 +8,28 @@ using System.Threading.Tasks;
 
 namespace PetBookApp.ViewModels
 {
-    class SignUpPageViewModel
+    public class SignUpPageViewModel : BaseViewModel
     {
+
+        protected INavigationService _navigationService;
+
+        public DelegateCommand GoToSignUpPetCommand { get; set; }
+        public  SignUpPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            GoToSignUpPetCommand = new DelegateCommand(async () =>
+            {
+                await GoToSignUpPet();
+
+            });
+
+        }
+
+        async Task GoToSignUpPet()
+        {
+            await _navigationService.NavigateAsync(Constants.GoToHomeTabbedPage);
+        }
+       
+
     }
 }

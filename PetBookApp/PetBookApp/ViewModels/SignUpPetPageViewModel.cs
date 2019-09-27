@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace PetBookApp.ViewModels
 {
-    class SignUpPetPageViewModel
+    public class SignUpPetPageViewModel : BaseViewModel
     {
+        
+
     }
 }
