@@ -6,5 +6,9 @@ namespace PetBookApp.ViewModels
 {
     public class PostDetailPageViewModel : BaseViewModel
     {
+        public PostDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+        {
+
+        }
     }
 }

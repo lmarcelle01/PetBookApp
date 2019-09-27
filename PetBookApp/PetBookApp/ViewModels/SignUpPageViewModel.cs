@@ -14,7 +14,7 @@ namespace PetBookApp.ViewModels
         protected INavigationService _navigationService;
 
         public DelegateCommand GoToSignUpPetCommand { get; set; }
-        public  SignUpPageViewModel(INavigationService navigationService)
+        public  SignUpPageViewModel(INavigationService navigationService) :base(navigationService)
         {
             _navigationService = navigationService;
             GoToSignUpPetCommand = new DelegateCommand(async () =>

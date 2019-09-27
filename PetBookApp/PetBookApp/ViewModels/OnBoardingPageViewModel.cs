@@ -6,5 +6,9 @@ namespace PetBookApp.ViewModels
 {
     public class OnBoardingPageViewModel : BaseViewModel
     {
+        OnBoardingPageViewModel(INavigationService navigationService) : base(navigationService)
+        {
+
+        }
     }
 }

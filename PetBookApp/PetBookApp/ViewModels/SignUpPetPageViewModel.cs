@@ -13,7 +13,7 @@ namespace PetBookApp.ViewModels
         protected INavigationService _navigationService;
 
         public DelegateCommand GoToHomeTabbedCommand { get; set; }
-        public SignUpPetPageViewModel(INavigationService navigationService)
+        public SignUpPetPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             GoToHomeTabbedCommand = new DelegateCommand(async () =>

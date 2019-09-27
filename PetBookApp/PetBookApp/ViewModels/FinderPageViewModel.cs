@@ -7,6 +7,10 @@ namespace PetBookApp.ViewModels
 {
     public class FinderPageViewModel : BaseViewModel, IDestructible
     {
+        public FinderPageViewModel(INavigationService navigationService) : base(navigationService)
+        {
+
+        }
         public void Destroy()
         {
             
