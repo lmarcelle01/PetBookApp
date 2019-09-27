@@ -7,12 +7,10 @@
              x:Class="PetBookApp.Views.SignUpPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Entry Placeholder="Full Name"/>
+            <Entry Placeholder="PETBOOK"/>
             <Entry Placeholder="Username"/>
             <Entry Placeholder="Password" IsPassword="True"/>
-            <Entry Placeholder="Verify Password" IsPassword="True"/>
-            <Entry Placeholder="Email" Keyboard="Email"/>
-            <Button Text="Next" Command="{Binding GoToSignUpPetCommand}"/>
+            <Button Text="SignIn" Command="{Binding GoToHomeTabbedCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

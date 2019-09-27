@@ -20,7 +20,6 @@ namespace PetBookApp.ViewModels
             });
 
         }
-
         async Task GoToHomeTabbed()
         {
             await NavigateAsync(Constants.GoToHomeTabbedPage);
