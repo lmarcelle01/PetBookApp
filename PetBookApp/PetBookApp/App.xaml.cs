@@ -1,4 +1,6 @@
-﻿using Prism;
+﻿using PetBookApp.ViewModels;
+using PetBookApp.Views;
+using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using System;
@@ -18,7 +20,12 @@ namespace PetBookApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-           
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<HomeTabbedPage, HomeTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>();
+            containerRegistry.RegisterForNavigation<SignInPage, SignInPageViewModel>();
+            containerRegistry.RegisterForNavigation<SignUpPetPage, SignUpPetPageViewModel>();
+    
         }
     }
 }
