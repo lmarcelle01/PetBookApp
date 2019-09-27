@@ -15,12 +15,12 @@ namespace PetBookApp.ViewModels
         {
             GoToGettingStartedCommand = new DelegateCommand(async () =>
             {
-                await GoToHomeTabbed();
+                await GoToGettingStartedPage();
 
             });
 
         }
-        async Task GoToHomeTabbed()
+        async Task GoToGettingStartedPage()
         {
             await NavigateAsync(Constants.GoToGettingStartedPage);
         }
