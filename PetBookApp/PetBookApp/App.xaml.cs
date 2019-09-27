@@ -17,6 +17,7 @@ namespace PetBookApp
         protected override void OnInitialized()
         {
             InitializeComponent();
+            NavigationService.NavigateAsync(Constants.GoToOnBoardingPage);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
