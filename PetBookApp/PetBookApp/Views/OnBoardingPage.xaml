@@ -7,9 +7,12 @@
              x:Class="PetBookApp.Views.OnBoardingPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="This is the BoardingPage"
+                   
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign In" Command="{Binding GoToSignInPageCommand}"></Button>
+            <Button Text="Sign Up" Command="{Binding GoToSignUpPageCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
