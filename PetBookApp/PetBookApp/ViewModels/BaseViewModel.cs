@@ -8,6 +8,7 @@ using Prism.Navigation;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Prism.Mvvm;
+using Prism.Navigation.TabbedPages;
 
 namespace PetBookApp.ViewModels
 {
@@ -45,6 +46,11 @@ namespace PetBookApp.ViewModels
            return _navigationService.NavigateAsync(page);
         }
 
+        protected Task NavigateAsync(string page)
+        {
+            return _navigationService.NavigateAsync(page);
+        }
+
         protected Task GoBackAsync()
         {
             return _navigationService.GoBackAsync();
@@ -53,6 +59,11 @@ namespace PetBookApp.ViewModels
         protected Task GoBackToRootAsync()
         {
             return _navigationService.GoBackToRootAsync();
+        }
+
+        protected Task<INavigationResult> SelectTab(string page)
+        {
+            return _navigationService.SelectTabAsync(page);
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
