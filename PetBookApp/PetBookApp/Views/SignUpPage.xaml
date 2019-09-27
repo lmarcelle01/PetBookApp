@@ -6,11 +6,15 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.SignUpPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Entry Placeholder="PETBOOK"/>
-            <Entry Placeholder="Username"/>
-            <Entry Placeholder="Password" IsPassword="True"/>
-            <Button Text="SignIn" Command="{Binding GoToHomeTabbedCommand}"/>
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Entry Placeholder="Full name"/>
+                <Entry Placeholder="Username"/>
+                <Entry Placeholder="Password" IsPassword="True"/>
+                <Entry Placeholder="Verify password" IsPassword="True"/>
+                <Entry Placeholder="Email" Keyboard="Email"/>
+                <Button Text="Next" Command="{Binding GoToSignUpPetCommand}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,10 +6,11 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.SignInPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Entry Placeholder="PETBOOK"/>
+            <Entry Placeholder="Username"/>
+            <Entry Placeholder="Password" IsPassword="True"/>
+            <Button Text="Sign in" Command="{Binding GoToHomeTabbedCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
