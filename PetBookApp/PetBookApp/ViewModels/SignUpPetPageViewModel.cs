@@ -10,12 +10,9 @@ namespace PetBookApp.ViewModels
 {
     public class SignUpPetPageViewModel : BaseViewModel
     {
-        protected INavigationService _navigationService;
-
         public DelegateCommand GoToHomeTabbedCommand { get; set; }
         public SignUpPetPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _navigationService = navigationService;
             GoToHomeTabbedCommand = new DelegateCommand(async () =>
             {
                 await GoToHomeTabbed();
@@ -26,7 +23,7 @@ namespace PetBookApp.ViewModels
 
         async Task GoToHomeTabbed()
         {
-            await _navigationService.NavigateAsync(Constants.GoToHomeTabbedPage);
+            await NavigateAsync(Constants.GoToHomeTabbedPage);
         }
 
     }
