@@ -7,9 +7,11 @@
              x:Class="PetBookApp.Views.ProfilePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="This is Profile Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Settings" Command="{Binding GoToSettingsCommand}"></Button>
+            <Button Text="Add Pet" Command="{Binding GoToAddPetCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -7,9 +7,10 @@
              x:Class="PetBookApp.Views.SettingsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="This is Settings Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

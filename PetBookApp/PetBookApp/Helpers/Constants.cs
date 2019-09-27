@@ -19,5 +19,6 @@ namespace PetBookApp.Helpers
         public static Uri GoToSignUpPage = new Uri("SignUpPage", UriKind.Relative);
         public static Uri GoToSignUpPetPage = new Uri("SignUpPetPage", UriKind.Relative);
         public static Uri GoToFinderPage = new Uri("FinderPage", UriKind.Relative);
+        public static Uri GoToSettingsPage = new Uri("SettingsPage", UriKind.Absolute);
     }
 }
