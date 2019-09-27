@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PetBookApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostTextImagePage : ContentPage
+    public partial class PostTextPage : ContentPage
     {
-        public PostTextImagePage()
+        public PostTextPage()
         {
             InitializeComponent();
         }
