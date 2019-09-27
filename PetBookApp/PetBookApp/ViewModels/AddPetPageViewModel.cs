@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PetBookApp.ViewModels
 {
-    class AddPetPageViewModel
+    public class AddPetPageViewModel : BaseViewModel
     {
     }
 }

@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PetBookApp.ViewModels
 {
-    public class FinderPageViewModel
+    public class FinderPageViewModel : BaseViewModel, IDestructible
     {
+        public void Destroy()
+        {
+            
+        }
     }
 }

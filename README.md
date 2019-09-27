@@ -1,7 +1,7 @@
 # PetBookApp
 Social Network for Pet Lovers
 
-Authors: 
+## Authors: 
 Laura Gómez,
 Gerzon Zorrilla &
 Marcos Rodriguez

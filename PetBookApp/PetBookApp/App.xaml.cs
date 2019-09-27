@@ -25,7 +25,13 @@ namespace PetBookApp
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>();
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageViewModel>();
             containerRegistry.RegisterForNavigation<SignUpPetPage, SignUpPetPageViewModel>();
-    
+
+            containerRegistry.RegisterForNavigation<GettingStartedPage, GettingStartedPageViewModel>();
+            containerRegistry.RegisterForNavigation<PostImagePage, PostImagePageViewModel>();
+            containerRegistry.RegisterForNavigation<PostTextPage, PostTextPageViewModel>();
+            containerRegistry.RegisterForNavigation<PostDetailPage, PostDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<FinderPage, FinderPageViewModel>();
+
         }
     }
 }
