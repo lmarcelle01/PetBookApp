@@ -27,7 +27,7 @@ namespace PetBookApp.ViewModels
 
         async Task GoToSignUpPet()
         {
-            await _navigationService.NavigateAsync(Constants.GoToHomeTabbedPage);
+            await _navigationService.NavigateAsync(Constants.GoToSignUpPetPage);
         }
        
 
