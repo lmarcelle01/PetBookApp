@@ -7,9 +7,11 @@
              x:Class="PetBookApp.Views.GettingStartedPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Getting Started!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Finish" Command="{Binding HomeTabbedPage}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -7,8 +7,8 @@ namespace PetBookApp.Helpers
     public static class Constants
     {
         public static string GoToGettingStartedPage = "/GettingStartedPage";
-        public static string GoToOnBoardingPage = "NavigationPage/OnBoardingPage";
-        public static Uri GoToHome = new Uri("NavigationPage/HomeTabbedPage/HomePage", UriKind.Relative);
+        public static string GoToOnBoardingPage = "OnBoardingPage";
+        public static Uri GoToHome = new Uri("NavigationPage/HomePage", UriKind.Relative);
         public static Uri GoToHomeTabbedPage = new Uri("HomeTabbedPage", UriKind.RelativeOrAbsolute);
         public static Uri GoToPostImagePage = new Uri("PostImagePage", UriKind.Relative);
         public static Uri GoToPostTextPage = new Uri("PostTextPage", UriKind.Relative);

@@ -14,7 +14,6 @@ namespace PetBookApp.ViewModels
             AddPetCommand = new DelegateCommand(async () =>
             {
                 await GoBackAsync();
-
             });
         }
 

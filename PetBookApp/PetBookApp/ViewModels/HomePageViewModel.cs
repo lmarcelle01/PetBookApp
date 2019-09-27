@@ -14,7 +14,6 @@ namespace PetBookApp.ViewModels
     {
         public event EventHandler IsActiveChanged;
 
-        public INavigationService navigationService;
         protected IPageDialogService _dialogService;
 
         private bool _isActive;

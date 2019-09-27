@@ -15,7 +15,6 @@ namespace PetBookApp.ViewModels
     public class BaseViewModel : BindableBase, INavigationAware, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected Page Page { get; private set; }
         private INavigationService _navigationService;
         private bool _isBusy;
 
