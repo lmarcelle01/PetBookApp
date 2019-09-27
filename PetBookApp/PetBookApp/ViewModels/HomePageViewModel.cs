@@ -47,7 +47,7 @@ namespace PetBookApp.ViewModels
 
         async Task DisplayPostActionSheet()
         {
-            string action = await _dialogService.DisplayActionSheetAsync("ActionSheet: Select an option", "Cancel", null, "Post text", "Post image");
+            string action = await _dialogService.DisplayActionSheetAsync("Select an option", "Cancel", null, "Post text", "Post image");
             switch (action)
             {
                 case "Post text":
@@ -56,7 +56,6 @@ namespace PetBookApp.ViewModels
                 case "Post image":
                     await NavigateAsync(Constants.GoToPostImagePage);
                     break;
-
             }
         }
     }

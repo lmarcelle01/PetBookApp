@@ -7,7 +7,7 @@
              x:Class="PetBookApp.Views.SignInPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Entry Placeholder="PETBOOK"/>
+            <Label Text="PETBOOK" FontAttributes="Bold" FontSize="Title"/>
             <Entry Placeholder="Username"/>
             <Entry Placeholder="Password" IsPassword="True"/>
             <Button Text="Sign in" Command="{Binding GoToHomeTabbedCommand}"/>
