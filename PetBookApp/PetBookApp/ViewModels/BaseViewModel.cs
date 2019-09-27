@@ -48,7 +48,7 @@ namespace PetBookApp.ViewModels
             return _navigationService.GoBackAsync();
         }
 
-        protected Task GoBackToRoot(bool animate)
+        protected Task GoBackToRootAsync()
         {
             return _navigationService.GoBackToRootAsync();
         }
