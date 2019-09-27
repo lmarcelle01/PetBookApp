@@ -9,7 +9,7 @@ namespace PetBookApp.Helpers
         public static string GoToGettingStartedPage = "/GettingStartedPage";
         public static string GoToOnBoardingPage = "/OnBoardingPage";
         public static Uri GoToHome = new Uri("NavigationPage/HomePage", UriKind.Relative);
-        public static Uri GoToHomeTabbedPage = new Uri("HomeTabbedPage", UriKind.RelativeOrAbsolute);
+        public static Uri GoToHomeTabbedPage = new Uri("HomeTabbedPage", UriKind.Absolute);
         public static Uri GoToPostImagePage = new Uri("PostImagePage", UriKind.Relative);
         public static Uri GoToPostTextPage = new Uri("PostTextPage", UriKind.Relative);
         public static Uri GoToPostDetailPage = new Uri("PostDetailPage", UriKind.Relative);
