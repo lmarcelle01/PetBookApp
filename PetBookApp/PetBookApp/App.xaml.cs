@@ -6,6 +6,7 @@ using Prism.Unity;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PetBookApp.Helpers;
 
 namespace PetBookApp
 {
@@ -25,6 +26,11 @@ namespace PetBookApp
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>();
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageViewModel>();
             containerRegistry.RegisterForNavigation<SignUpPetPage, SignUpPetPageViewModel>();
+
+            containerRegistry.RegisterForNavigation<OnBoardingPage, OnBoardingPageViewModel>();
+            containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddPetPage, AddPetPageViewModel>();
+            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
 
             containerRegistry.RegisterForNavigation<GettingStartedPage, GettingStartedPageViewModel>();
             containerRegistry.RegisterForNavigation<PostImagePage, PostImagePageViewModel>();
