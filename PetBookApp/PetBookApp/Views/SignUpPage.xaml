@@ -6,10 +6,13 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.SignUpPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Entry Placeholder="Full Name"/>
+            <Entry Placeholder="Username"/>
+            <Entry Placeholder="Password" IsPassword="True"/>
+            <Entry Placeholder="Verify Password" IsPassword="True"/>
+            <Entry Placeholder="Email" Keyboard="Email"/>
+            <Button Text="Next"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

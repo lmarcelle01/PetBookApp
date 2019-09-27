@@ -7,9 +7,13 @@
              x:Class="PetBookApp.Views.SignUpPetPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Entry Placeholder="Pet name"/>
+                <Entry Placeholder="Age"/>
+                <Entry Placeholder="Gender"/>
+                <Entry Placeholder="About" />
+                <Button Text="Sign up"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
