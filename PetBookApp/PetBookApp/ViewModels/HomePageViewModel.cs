@@ -1,4 +1,5 @@
-﻿using PetBookApp.Helpers;
+﻿using Newtonsoft.Json;
+using PetBookApp.Helpers;
 using PetBookApp.Services;
 using Prism.Commands;
 using Prism.Navigation;
@@ -9,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+
 
 namespace PetBookApp.ViewModels
 {
@@ -45,7 +48,7 @@ namespace PetBookApp.ViewModels
 
             FetchWeather = new DelegateCommand(async () =>
             {
-                await GetWeather(city.Name);
+                await RunSafe(GetWeather(city.Name));
             });
 
             
@@ -53,8 +56,23 @@ namespace PetBookApp.ViewModels
 
         async Task GetWeather(string city)
         {
-            var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
-            var weather = await apiResponse.GetWeather(city);
+            //var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
+            //var weather = await apiResponse.GetWeather(city);
+
+            var weatherResponse = await ApiManager.GetWeather(city);
+
+            if (weatherResponse.IsSuccessStatusCode)
+            {
+                var response = await weatherResponse.Content.ReadAsStringAsync();
+                var json = await Task.Run(() => JsonConvert.DeserializeObject<Weather>(response));
+            }
+            else
+            {
+                await _dialogService.DisplayAlertAsync("Unable to get adata", "Error", "Ok");
+            }
+           
+            
+            
             //return weather;
         }
 
