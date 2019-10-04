@@ -7,8 +7,6 @@
              x:Class="PetBookApp.Views.HomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding city.Name}"/>
-            <Button Text="GET WEATHER" Command="{Binding FetchWeather}"/>
             <Label Text="This is our Home Page currently under construction."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

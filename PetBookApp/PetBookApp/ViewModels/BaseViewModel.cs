@@ -19,9 +19,9 @@ namespace PetBookApp.ViewModels
     public class BaseViewModel : BindableBase, INavigationAware, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public IApiManager ApiManager;
+        //public IApiManager ApiManager;
         private INavigationService _navigationService;
-        IApiService<IWeatherApi> getWeatherApi = new ApiService<IWeatherApi>(Config.ApiUrl);
+        //IApiService<IWeatherApi> getWeatherApi = new ApiService<IWeatherApi>(Config.ApiUrl);
         private bool _isBusy;
 
         public bool IsBusy {
@@ -38,31 +38,31 @@ namespace PetBookApp.ViewModels
         public BaseViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            ApiManager = new ApiManager(getWeatherApi);
+            //ApiManager = new ApiManager(getWeatherApi);
         }
 
-        public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
-        {
-            try
-            {
-                if (IsBusy) return;
+        //public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
+        //{
+        //    try
+        //    {
+        //        if (IsBusy) return;
 
-                IsBusy = true;
+        //        IsBusy = true;
 
-                if (ShowLoading) UserDialogs.Instance.ShowLoading(loadingMessage ?? "Loading");
-            } catch(Exception e)
-            {
-                IsBusy = false;
-                UserDialogs.Instance.HideLoading();
-                Debug.WriteLine(e.ToString());
-                await App.Current.MainPage.DisplayAlert("Error", "Check your internet connection", "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
-                if (ShowLoading) UserDialogs.Instance.HideLoading();
-            }
-        }
+        //        if (ShowLoading) UserDialogs.Instance.ShowLoading(loadingMessage ?? "Loading");
+        //    } catch(Exception e)
+        //    {
+        //        IsBusy = false;
+        //        UserDialogs.Instance.HideLoading();
+        //        Debug.WriteLine(e.ToString());
+        //        await App.Current.MainPage.DisplayAlert("Error", "Check your internet connection", "Ok");
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //        if (ShowLoading) UserDialogs.Instance.HideLoading();
+        //    }
+        //}
 
         public void RaiseOnPropertyChanged([CallerMemberName] string propertyName = null)
         {

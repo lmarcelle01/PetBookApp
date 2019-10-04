@@ -18,7 +18,6 @@ namespace PetBookApp.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public event EventHandler IsActiveChanged;
-        public City city { get; set; }
 
         protected IPageDialogService _dialogService;
 
@@ -31,7 +30,6 @@ namespace PetBookApp.ViewModels
 
         public DelegateCommand DisplayPostActionSheetCommand { get; set; }
 
-        public DelegateCommand FetchWeather { get; set; }
 
         protected virtual void RaiseIsActiveChanged()
         {
@@ -46,35 +44,35 @@ namespace PetBookApp.ViewModels
 
             });
 
-            FetchWeather = new DelegateCommand(async () =>
-            {
-                await RunSafe(GetWeather(city.Name));
-            });
+            //FetchWeather = new DelegateCommand(async () =>
+            //{
+            //    await RunSafe(GetWeather(city.Name));
+            //});
 
             
         }
 
-        async Task GetWeather(string city)
-        {
-            //var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
-            //var weather = await apiResponse.GetWeather(city);
+        //async Task GetWeather(string city)
+        //{
+        //    //var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
+        //    //var weather = await apiResponse.GetWeather(city);
 
-            var weatherResponse = await ApiManager.GetWeather(city);
+        //    var weatherResponse = await ApiManager.GetWeather(city);
 
-            if (weatherResponse.IsSuccessStatusCode)
-            {
-                var response = await weatherResponse.Content.ReadAsStringAsync();
-                var json = await Task.Run(() => JsonConvert.DeserializeObject<Weather>(response));
-            }
-            else
-            {
-                await _dialogService.DisplayAlertAsync("Unable to get adata", "Error", "Ok");
-            }
-           
-            
-            
-            //return weather;
-        }
+        //    if (weatherResponse.IsSuccessStatusCode)
+        //    {
+        //        var response = await weatherResponse.Content.ReadAsStringAsync();
+        //        var json = await Task.Run(() => JsonConvert.DeserializeObject<Weather>(response));
+        //    }
+        //    else
+        //    {
+        //        await _dialogService.DisplayAlertAsync("Unable to get adata", "Error", "Ok");
+        //    }
+
+
+
+        //    //return weather;
+        //}
 
         //async void SelectTab(object parameters)
         //{
