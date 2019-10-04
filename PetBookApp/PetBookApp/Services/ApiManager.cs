@@ -21,12 +21,12 @@ namespace PetBookApp.Services
         IConnectivity connectivity = CrossConnectivity.Current;
         public bool IsConnected { get; set; }
         public bool IsReachable { get; set; }
-        IApiService<IWeatherApi> getWeatherApi;
+        IApiService<string> newApi;
         Dictionary<int, CancellationTokenSource> runningTasks = new Dictionary<int, CancellationTokenSource>();
         Dictionary<string, Task<HttpResponseMessage>> taskContainer = new Dictionary<string, Task<HttpResponseMessage>>();
-        public ApiManager(IApiService<IWeatherApi> _getWeatherApi)
+        public ApiManager(IApiService<string> _newApi)
         {
-            getWeatherApi = _getWeatherApi;
+            newApi = _newApi;
             IsConnected = connectivity.IsConnected;
             connectivity.ConnectivityChanged += OnConnectivityChanged;
         }
@@ -45,14 +45,15 @@ namespace PetBookApp.Services
             }
         }
 
-        public async Task<HttpResponseMessage> GetWeather(string city)
-        {
-            var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync<HttpResponseMessage>(getWeatherApi.GetApi(Priority.UserInitiated).GetWeather(city));
-            runningTasks.Add(task.Id, cts);
+        //public async Task<HttpResponseMessage> GetWeather(string city)
+        //{
+        //    var cts = new CancellationTokenSource();
+        //    var task = ;
+        //    /*RemoteRequestAsync<HttpResponseMessage>(newApi.GetApi(Priority.UserInitiated).GetType());*/
+        //    runningTasks.Add(task.Id, cts);
 
-            return await task;
-        }
+        //    return await task;
+        //}
 
         protected async Task<TData> RemoteRequestAsync<TData> (Task<TData> task)
             where TData : HttpResponseMessage,
@@ -102,6 +103,11 @@ namespace PetBookApp.Services
                 });
 
             return data;
+        }
+
+        public Task<HttpResponseMessage> GetWeather(string city)
+        {
+            throw new NotImplementedException();
         }
     }
 

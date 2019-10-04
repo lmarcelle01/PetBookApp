@@ -7,12 +7,15 @@
              x:Class="PetBookApp.Views.OnBoardingPage">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="PetBook" FontFamily="{StaticResource AppLogo}"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Text="This is the BoardingPage"
-                   
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign In" Command="{Binding GoToSignInPageCommand}"></Button>
-            <Button Text="Sign Up" Command="{Binding GoToSignUpPageCommand}"></Button>
+
+            <Button Text="Sign In" Command="{Binding GoToSignInPageCommand}" Style="{StaticResource ButtonStyle}"/>
+            <Button Text="Sign Up" Command="{Binding GoToSignUpPageCommand}" Style="{StaticResource ButtonStyle}"
+                    Margin="0, 20,0,80"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

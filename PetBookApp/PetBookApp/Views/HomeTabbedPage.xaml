@@ -1,13 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    android:TabbedPage.ToolbarPlacement="Bottom"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:PetBookApp.Views"
             mc:Ignorable="d"
-             x:Class="PetBookApp.Views.HomeTabbedPage">
+             x:Class="PetBookApp.Views.HomeTabbedPage"
+            >
     <TabbedPage.Children>
-        <local:HomePage Title="HOME"/>
-        <local:ProfilePage Title="PROFILE"/>
+        <local:HomePage IconImageSource="home.png"/>
+        <local:ProfilePage IconImageSource="user.png"/>
     </TabbedPage.Children>
 </TabbedPage>
