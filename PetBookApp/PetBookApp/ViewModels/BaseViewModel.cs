@@ -22,12 +22,8 @@ namespace PetBookApp.ViewModels
         //public IApiManager ApiManager;
         private INavigationService _navigationService;
         //IApiService<IWeatherApi> getWeatherApi = new ApiService<IWeatherApi>(Config.ApiUrl);
-        private bool _isBusy;
 
-        public bool IsBusy {
-            get { return _isBusy; }
-            set { SetProperty(ref _isBusy, value, () => RaisePropertyChanged(nameof(IsNotBusy))); }
-        }
+        public bool IsBusy { get; set; }
 
         public bool IsNotBusy
         {
@@ -104,6 +100,6 @@ namespace PetBookApp.ViewModels
             
         }
 
-
+        
     }
 }

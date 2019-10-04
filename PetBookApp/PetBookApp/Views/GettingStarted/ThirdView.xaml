@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             mc:Ignorable="d"
+             x:Class="PetBookApp.Views.GettingStarted.ThirdView">
+  <ContentView.Content>
+        <forms:AnimationView x:Name="AnimationView"
+                         Animation="event.json"
+                         Loop="True"
+                         AutoPlay="True"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand" />
+    </ContentView.Content>
+</ContentView>

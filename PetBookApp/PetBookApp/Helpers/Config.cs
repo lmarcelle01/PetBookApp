@@ -7,6 +7,7 @@ namespace PetBookApp.Helpers
 {
     public static class Config
     {
+        private const string Pattern = @"^?http(?:s)?://?(?:www(?:[0-9]+]?\.";
         public static string ApiUrl = "http://api.openweathermap.org";
         public static string ApiKey = "";
 
@@ -14,7 +15,7 @@ namespace PetBookApp.Helpers
         {
             get
             {
-                var apiHostName = Regex.Replace(ApiUrl, @"^(?http(?:s)?)://?(?:www(?:[0-9]+]?\.)?)", string.Empty, RegexOptions.IgnoreCase)
+                var apiHostName = Regex.Replace(ApiUrl, Pattern, string.Empty, RegexOptions.IgnoreCase)
                     .Replace("/", string.Empty);
                 return apiHostName;
             }

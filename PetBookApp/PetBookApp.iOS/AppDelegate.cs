@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using CarouselView.FormsPlugin.iOS;
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using Prism;
 using Prism.Ioc;
+using Sharpnado.Presentation.Forms.iOS;
 using UIKit;
 
 namespace PetBookApp.iOS
@@ -25,6 +27,9 @@ namespace PetBookApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            CarouselViewRenderer.Init();
+            AnimationViewRenderer.Init();
+            SharpnadoInitializer.Initialize();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

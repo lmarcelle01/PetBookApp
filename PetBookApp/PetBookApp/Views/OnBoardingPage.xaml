@@ -7,7 +7,7 @@
              x:Class="PetBookApp.Views.OnBoardingPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="PetBook" FontFamily="{StaticResource AppLogo}"
+            <Label Text="PetBook" FontFamily="{StaticResource AppLogo}" FontSize="Title"
                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Text="This is the BoardingPage"
                 VerticalOptions="CenterAndExpand" 

@@ -4,14 +4,45 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PetBookApp.Views.GettingStartedPage">
+             x:Class="PetBookApp.Views.GettingStartedPage"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Getting Started!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <Button Text="Finish" Command="{Binding HomeTabbedPage}"/>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="*" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <carousel:CarouselViewControl
+                x:Name="Carousel"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Orientation="Horizontal"
+                Position="0"
+                ShowIndicators="True"
+                CurrentPageIndicatorTintColor="LightGray"
+                IndicatorsTintColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                PositionSelected="OnCarouselPositionSelected" />
+            <Grid
+                Grid.Row="1"
+                Padding="12"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="EndAndExpand"
+                AutomationId="skip">
+                <Label
+                    Text="SKIP"
+                    FontSize="14" TextColor="LightGray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HomeTabbedPage}">
+                            
+                        </TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
