@@ -1,69 +1,41 @@
-﻿using Fusillade;
-using ModernHttpClient;
-using Refit;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using PetBookApp.Helpers;
+using PetBookApp.Models;
+using Refit;
 
 namespace PetBookApp.Services
 {
-    public class ApiService<T> : IApiService<T>
+    class ApiService : IAuthenticationApi, IPetbookApi
     {
-        Func<HttpMessageHandler, T> createClient;
-        public ApiService(string apiBaseAdress)
+        public async Task AddPetAsync([Body] Pet pet)
         {
-            createClient = messageHandler =>
-            {
-                var client = new HttpClient(messageHandler)
-                {
-                    BaseAddress = new Uri(apiBaseAdress)
-                };
-                return RestService.For<T>(client);
-            };
+            var apiResponse = RestService.For<IPetbookApi>(Config.ApiUrl);
+            await apiResponse.AddPetAsync(pet);
         }
 
-        private T Background
+        public async Task<Token> Login([Body(BodySerializationMethod.UrlEncoded)] Dictionary<string, object> data)
         {
-            get
+            var authenticationApi = RestService.For<IAuthenticationApi>(Config.ApiUrl);
+            Token myUserToken = await authenticationApi.Login(data);
+
+            if(!(myUserToken == null))
             {
-                return new Lazy<T>(() => createClient(
-                    new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Background))).Value;
+                App.Current.Properties["TokenString"] = myUserToken.AccessToken;
+                App.Current.Properties["UserToken"] = myUserToken;
             }
+            return myUserToken;
         }
 
-        private T UserInitiated
+        public async Task<string> RegisterUserAsync([Body] User user)
         {
-            get
-            {
-                return new Lazy<T>(() => createClient(
-                     new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Background))).Value;
-            }
-        }
+            var authenticationApi = RestService.For<IAuthenticationApi>(Config.ApiUrl);
+            var userId = await authenticationApi.RegisterUserAsync(user);
 
-        private T Speculative
-        {
-            get
-            {
-                return new Lazy<T>(() => createClient(
-                    new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Background))).Value;
-            }
-        }
-
-        public T GetApi(Priority priority)
-        {
-            switch (priority)
-            {
-                case Priority.Background:
-                    return Background;
-                case Priority.UserInitiated:
-                    return UserInitiated;
-                case Priority.Speculative:
-                    return Speculative;
-                default:
-                    return UserInitiated;
-            }
+            return userId;
+               
         }
     }
 }
