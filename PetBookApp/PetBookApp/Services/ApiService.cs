@@ -15,11 +15,13 @@ namespace PetBookApp.Services
     {
         public async Task AddPetAsync(Pet pet)
         {
+            var json = JsonConvert.SerializeObject(pet);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Config.GetTokenString());
-            var json = await client.GetStringAsync(
-            $"{Config.ApiUrl}/api/values");
-            var values = JsonConvert.DeserializeObject<List<string>>(json);
+            var response = await client.PostAsync(
+                $"{Config.ApiUrl}/api/Pets", httpContent);
         }
 
         public async Task<Token> Login(List<KeyValuePair<string,string>> userData)
