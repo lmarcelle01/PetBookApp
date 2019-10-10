@@ -8,12 +8,12 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Entry Placeholder="Full name"/>
-                <Entry Placeholder="Username"/>
-                <Entry Placeholder="Password" IsPassword="True"/>
-                <Entry Placeholder="Verify password" IsPassword="True"/>
-                <Entry Placeholder="Email" Keyboard="Email"/>
-                <Button Text="Next" Command="{Binding GoToSignUpPetCommand}"/>
+                <Entry Placeholder="Full name" Text="{Binding NewUser.FullName,Mode=TwoWay}"/>
+                <Entry Placeholder="Username" Text="{Binding NewUser.Alias, Mode=TwoWay}"/>
+                <Entry Placeholder="Password" IsPassword="True" Text="{Binding NewUser.Password, Mode=TwoWay}"/>
+                <Entry Placeholder="Verify password" IsPassword="True" Text="{Binding NewUser.ConfirmPassword, Mode=TwoWay}"/>
+                <Entry Placeholder="Email" Keyboard="Email" Text="{Binding NewUser.Email, Mode=TwoWay}"/>
+                <Button Text="Next" Command="{Binding RegisterUserCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

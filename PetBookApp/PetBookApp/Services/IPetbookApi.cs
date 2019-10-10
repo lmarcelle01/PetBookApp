@@ -11,17 +11,15 @@ namespace PetBookApp.Services
     [Headers("Bearer {Config.GetTokenString}")]
     public interface IPetbookApi
     {
-        [Post("api/Pets")]
-       Task AddPetAsync([Body]Pet pet);
+       
+       Task AddPetAsync(Pet pet);
     }
     
     public interface IAuthenticationApi
-    {
-        [Post("api/Account/Register")]
-        Task<string> RegisterUserAsync([Body]User user);
+    { 
+        Task RegisterUserAsync(User user);
         
-        [Get("Token")]
-        Task<Token> Login([Body(BodySerializationMethod.UrlEncoded)] Dictionary<string, object> data);
+        Task<Token> Login(List<KeyValuePair<string,string>> userData);
 
     }
 }

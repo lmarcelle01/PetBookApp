@@ -9,7 +9,7 @@ namespace PetBookApp.Helpers
 {
     public static class Config
     {     
-        public static string ApiUrl = "https://petbookbackend20191008113748.azurewebsites.net/";
+        public static string ApiUrl = "https://petbookbackend20191008113748.azurewebsites.net";
 
         public static string GetTokenString()
         {
