@@ -24,6 +24,26 @@ namespace PetBookApp.Services
                 $"{Config.ApiUrl}/api/Pets", httpContent);
         }
 
+        public Task<List<Post>> GetAllPostsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Comment>> GetPostCommentsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Pet>> GetUserPetsAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task LikePostAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Token> Login(List<KeyValuePair<string,string>> userData)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"{Config.ApiUrl}/Token");
@@ -39,6 +59,16 @@ namespace PetBookApp.Services
                 App.Current.Properties["UserToken"] = myUserToken;
             }
             return myUserToken;
+        }
+
+        public Task PostAPostAsync(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PostCommentAsync(Comment comment)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task RegisterUserAsync(User user)
