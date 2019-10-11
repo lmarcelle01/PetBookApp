@@ -6,11 +6,14 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.SignInPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Label Text="PETBOOK" FontAttributes="Bold" FontSize="Title"/>
-            <Entry Placeholder="Email" Text="{Binding User.Email}"/>
-            <Entry Placeholder="Password" IsPassword="True" Text="{Binding User.Password}"/>
-            <Button Text="Sign in" Command="{Binding LogInCommand}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="PetBook" FontFamily="{StaticResource AppLogo}" FontSize="Title"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Entry Placeholder="Email" Keyboard="Email" Margin="0,25,0,0" Text="{Binding User.Email}"/>
+                <Entry Placeholder="Password"  Margin="0,0,0,25" IsPassword="True" Text="{Binding User.Password}"/>
+                <Button Text="Sign in" Command="{Binding LogInCommand}"  Style="{StaticResource ButtonStyle}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

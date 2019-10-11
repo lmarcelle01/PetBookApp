@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PetBookApp.Views.SignUpPetPage">
+             x:Class="PetBookApp.Views.SignUpPetPage"
+             xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
@@ -12,7 +13,7 @@
                 <Entry Placeholder="Age"/>
                 <Entry Placeholder="Gender"/>
                 <Entry Placeholder="About" />
-                <Button Text="Sign up" Command="{Binding GoToGettingStartedCommand}"/>
+                <Button Text="Sign up" Command="{prism:NavigateTo 'GettingStartedPage'}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

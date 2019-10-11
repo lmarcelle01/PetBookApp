@@ -28,9 +28,10 @@ namespace PetBookApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CarouselViewRenderer.Init();
-            AnimationViewRenderer.Init();
+           
             SharpnadoInitializer.Initialize();
             LoadApplication(new App(new iOSInitializer()));
+            AnimationViewRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

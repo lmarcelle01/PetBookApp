@@ -12,8 +12,6 @@ namespace PetBookApp.ViewModels
 {
     public class SignInPageViewModel : BaseViewModel
     {
-
-
         public DelegateCommand LogInCommand { get; set; }
 
         public User User { get; set; }
