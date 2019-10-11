@@ -15,14 +15,8 @@
             <On Platform="iOS" Value="Lato-Regular" />
             <On Platform="Android" Value="Lato-Regular.ttf#Lato-Regular" />
         </OnPlatform>
-        <OnPlatform x:TypeArguments="x:String" x:Key="GeneralAppFont">
-            <On Platform="iOS" Value="Lato-Regular" />
-            <On Platform="Android" Value="Lato-Regular.ttf#Lato-Regular" />
-        </OnPlatform>
-        <OnPlatform x:TypeArguments="x:String" x:Key="GeneralAppFont">
-            <On Platform="iOS" Value="Lato-Regular" />
-            <On Platform="Android" Value="Lato-Regular.ttf#Lato-Regular" />
-        </OnPlatform>
+     
+        
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="HorizontalOptions" Value="Center"/>

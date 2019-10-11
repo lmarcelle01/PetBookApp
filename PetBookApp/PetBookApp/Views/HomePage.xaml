@@ -29,7 +29,7 @@
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding UserId, StringFormat='User: {0}'}"></Label>
+                                <Label Margin="0,20,0,0" Grid.Row="0" Grid.Column="0" Text="{Binding UserId, StringFormat='User: {0}'}"></Label>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding PetId, StringFormat='Pet: {0}'}"></Label>
                                 <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Aspect="Fill" Source="{Binding ImageUrl}"></Image>
                                 <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ContentText}" HorizontalOptions="Center"/>
