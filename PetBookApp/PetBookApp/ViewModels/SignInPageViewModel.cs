@@ -50,7 +50,7 @@ namespace PetBookApp.ViewModels
                     await apiService.Login(userData);
                     if(Config.GetToken() != null)
                     {
-                        await NavigateAsync(Constants.GoToAddPetPage);
+                        await NavigateAsync(Constants.GoToHomeTabbedPage);
                     }
                     else
                     {
@@ -68,8 +68,6 @@ namespace PetBookApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("Error", "Unable to connect to the server", "Ok");
             }
 
-
-            await NavigateAsync(Constants.GoToHomeTabbedPage);
         }
 
     }
