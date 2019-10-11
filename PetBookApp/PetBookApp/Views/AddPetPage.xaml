@@ -22,10 +22,12 @@
                     <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
 
-                <controls:CircleImage Grid.Row="0" Grid.Column="0" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Desenka_meadow_2016_G1.jpg/500px-Desenka_meadow_2016_G1.jpg" WidthRequest="160" HeightRequest="160"></controls:CircleImage>
+               <controls:CircleImage Grid.Row="0" Grid.Column="0" Source="{Binding ImageSource}" WidthRequest="160" HeightRequest="160"></controls:CircleImage>
 
-
-                <Button Grid.Row="0" Grid.Column="1" Text="Add Profile Image" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource ButtonStyle}" ></Button>
+                <Label Text="{Binding ImageUrl}"></Label>
+                <Button Grid.Row="0" Grid.Column="1" Text="Add Profile Image" HorizontalOptions="Center" 
+                        VerticalOptions="Center" Style="{StaticResource ButtonStyle}"
+                        Command="{Binding AddProfilePictureCommand}"></Button>
 
                 <Entry  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Pet name"></Entry>
                 <Entry  Grid.Row="2" Grid.Column="0" Placeholder="Age" Keyboard="Numeric"></Entry>

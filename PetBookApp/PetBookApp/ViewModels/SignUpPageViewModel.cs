@@ -43,7 +43,7 @@ namespace PetBookApp.ViewModels
             };
             Token getToken = await apiService.Login(userData);
 
-            await PetbookApi.AddPetAsync(new Models.Pet());
+            await NavigateAsync(Constants.GoToAddPetPage);
 
         }
        

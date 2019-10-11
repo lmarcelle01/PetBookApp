@@ -44,52 +44,18 @@ namespace PetBookApp.ViewModels
 
             });
 
-            //FetchWeather = new DelegateCommand(async () =>
-            //{
-            //    await RunSafe(GetWeather(city.Name));
-            //});
-
-            
-        }
-
-        //async Task GetWeather(string city)
-        //{
-        //    //var apiResponse = RestService.For<IWeatherApi>(Config.ApiUrl);
-        //    //var weather = await apiResponse.GetWeather(city);
-
-        //    var weatherResponse = await ApiManager.GetWeather(city);
-
-        //    if (weatherResponse.IsSuccessStatusCode)
-        //    {
-        //        var response = await weatherResponse.Content.ReadAsStringAsync();
-        //        var json = await Task.Run(() => JsonConvert.DeserializeObject<Weather>(response));
-        //    }
-        //    else
-        //    {
-        //        await _dialogService.DisplayAlertAsync("Unable to get adata", "Error", "Ok");
-        //    }
-
-
-
-        //    //return weather;
-        //}
-
-        //async void SelectTab(object parameters)
-        //{
-        //    var result = await base.SelectTab("PROFILE");
-        //}
-
-        async Task DisplayPostActionSheet()
-        {
-            string action = await _dialogService.DisplayActionSheetAsync("Select an option", "Cancel", null, "Post text", "Post image");
-            switch (action)
+            async Task DisplayPostActionSheet()
             {
-                case "Post text":
-                    await NavigateAsync(Constants.GoToPostTextPage);
-                    break;
-                case "Post image":
-                    await NavigateAsync(Constants.GoToPostImagePage);
-                    break;
+                string action = await _dialogService.DisplayActionSheetAsync("Select an option", "Cancel", null, "Post text", "Post image");
+                switch (action)
+                {
+                    case "Post text":
+                        await NavigateAsync(Constants.GoToPostTextPage);
+                        break;
+                    case "Post image":
+                        await NavigateAsync(Constants.GoToPostImagePage);
+                        break;
+                }
             }
         }
     }

@@ -7,12 +7,13 @@ using Prism.Services;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
+using Xamarin.Forms;
 
 namespace PetBookApp.Helpers
 {
     public class MediaHelper
     {
-        private MediaFile _mediaFile;
+        public MediaFile _mediaFile;
         public string URL { get; set; }
 
         protected IPageDialogService _dialogService;
@@ -38,6 +39,8 @@ namespace PetBookApp.Helpers
                 if (_mediaFile == null) return null;
 
                 return _mediaFile.GetStream();
+
+               
             }
 
         }
@@ -60,13 +63,12 @@ namespace PetBookApp.Helpers
                 });
 
                 if (_mediaFile == null) return null;
-                return  _mediaFile.GetStream();      
-              
+                return _mediaFile.GetStream();
             }
 
         }
 
-        public async void UploadImage(Stream stream)
+        public async Task  UploadImage()
         {
             
             var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=marcosblob;AccountKey=s8xqEiEOaiBXuE7ZwzNF6jsxs9fxKyVWo1ZtYjiwjkeJOmR7tFmyoNAf1NSy8DYDoiPgPqPhCVlqlewZ+JMpkw==;EndpointSuffix=core.windows.net");
@@ -75,9 +77,9 @@ namespace PetBookApp.Helpers
             await container.CreateIfNotExistsAsync();
             var name = Guid.NewGuid().ToString();
             var blockBlob = container.GetBlockBlobReference($"{name}.png");
-            await blockBlob.UploadFromStreamAsync(stream);
+            await blockBlob.UploadFromStreamAsync(_mediaFile.GetStream());
             URL = blockBlob.Uri.OriginalString;           
-            await _dialogService.DisplayAlertAsync("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+          
         }
 
     }

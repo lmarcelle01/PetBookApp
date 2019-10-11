@@ -16,9 +16,9 @@ using System.Diagnostics;
 
 namespace PetBookApp.ViewModels
 {
-    public class BaseViewModel : BindableBase, INavigationAware, INotifyPropertyChanged
+    public class BaseViewModel : BindableBase, INavigationAware
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         private INavigationService _navigationService;
       
@@ -37,11 +37,7 @@ namespace PetBookApp.ViewModels
          
         }
 
-        public void RaiseOnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+ 
         protected Task NavigateAsync(Uri page)
         {
            return _navigationService.NavigateAsync(page);

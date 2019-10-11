@@ -22,6 +22,19 @@ namespace PetBookApp.Helpers
                 return "";
             }
         }
+
+        public static Token GetToken()
+        {
+            if (!(App.Current.Properties["UserToken"] == null))
+            {
+                return (Token)App.Current.Properties["UserToken"];
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         
     }
 }
