@@ -6,10 +6,33 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.PostImagePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10">
+            <Label Text="Select a pet to post with:" FontSize="Title"></Label>
+            <ListView HeightRequest="20" ItemsSource="{Binding UserPets}"
+                  x:Name="listv"
+                  SelectedItem="{Binding SelectedPet}"
+                      RowHeight='-1'
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label  Text="{Binding Name}"/>
+                                <Label Text="{Binding Age}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+            <Entry HorizontalOptions="StartAndExpand" Placeholder="Post title" Text="{Binding NewPost.Tile}"></Entry>
+            <StackLayout Orientation="Horizontal">
+                <Button  Text="Add Photo" HorizontalOptions="Start" 
+                VerticalOptions="Center" Style="{StaticResource ButtonStyle}"
+                Command="{Binding AddPictureCommand}"></Button>
+                <Image HorizontalOptions="End" Source="{Binding ImageSource}" WidthRequest="160" HeightRequest="160"></Image>
+            </StackLayout>
+            <Button  Text="Finish" Command="{Binding AddPostCommand}" Style="{StaticResource ButtonStyle}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

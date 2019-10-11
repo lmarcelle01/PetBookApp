@@ -34,9 +34,17 @@ namespace PetBookApp.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<Pet>> GetUserPetsAsync(string userId)
+        public async Task<List<Pet>> GetUserPetsAsync(string userId)
         {
-            throw new NotImplementedException();
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Config.GetTokenString());
+            var response = await client.GetAsync(
+                $"{Config.ApiUrl}/api/Pets?userId={userId}");
+            var content = await response.Content.ReadAsStringAsync();
+            List<Pet> petList = JsonConvert.DeserializeObject<List<Pet>>(content);
+
+            return petList;
+
         }
 
         public Task LikePostAsync()
@@ -61,9 +69,15 @@ namespace PetBookApp.Services
             return myUserToken;
         }
 
-        public Task PostAPostAsync(Post post)
+        public async Task PostAPostAsync(Post post)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(post);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Config.GetTokenString());
+            var response = await client.PostAsync(
+                $"{Config.ApiUrl}/api/Posts", httpContent);
         }
 
         public Task PostCommentAsync(Comment comment)

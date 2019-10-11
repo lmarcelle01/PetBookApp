@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PetBookApp.ViewModels
@@ -42,7 +43,7 @@ namespace PetBookApp.ViewModels
 
             AddProfilePictureCommand = new DelegateCommand(async () =>
             {
-                AddProfilePicture();
+                await AddProfilePicture();
             });
         }
 
@@ -50,28 +51,43 @@ namespace PetBookApp.ViewModels
 
         public async Task AddPetAsync()
         {
-            await MediaHelper.UploadImage();
-            NewPet.ProfileImageUrl = MediaHelper.URL;
-            Token currentUserToken = Config.GetToken();
-            if(currentUserToken != null)
+
+            try
             {
-                NewPet.UserId = currentUserToken.UserId;
-                await ApiService.AddPetAsync(NewPet);
-                await _dialogService.DisplayAlertAsync("Yay!", "Pet added sucessfully", "Ok");
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
+
+                    await MediaHelper.UploadImage();
+                    NewPet.ProfileImageUrl = MediaHelper.URL;
+                    Token currentUserToken = Config.GetToken();
+                    if (currentUserToken != null)
+                    {
+                        NewPet.UserId = currentUserToken.UserId;
+                        await ApiService.AddPetAsync(NewPet);
+                        await _dialogService.DisplayAlertAsync("Yay!", "Pet added sucessfully", "Ok");
+                    }
+                    else
+                    {
+                        await _dialogService.DisplayAlertAsync("You're not signed in", "Please sign in again", "Ok");
+                        await NavigateAsync(Constants.GoToSignInPage);
+                    }
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You don't have internet connection", "Ok");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await _dialogService.DisplayAlertAsync("You're not signed in", "Please sign in again", "Ok");
-                await NavigateAsync(Constants.GoToSignInPage);
+                await App.Current.MainPage.DisplayAlert("Error", "Unable to connect to the server", "Ok");
             }
-                    
 
         }
 
-        public async void AddProfilePicture()
+        public async Task AddProfilePicture()
         {
-
-           
+          
             Stream newImgSource;
             string action = await _dialogService.DisplayActionSheetAsync("Select an option", "Cancel", null, "Pick photo from gallery", "Take a photo");
             switch (action)
@@ -89,6 +105,8 @@ namespace PetBookApp.ViewModels
             }
 
         }
+
+        
 
     }
 }
