@@ -40,6 +40,7 @@ namespace PetBookApp
             containerRegistry.RegisterForNavigation<PostDetailPage, PostDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<FinderPage, FinderPageViewModel>();
 
+
         }
     }
 }

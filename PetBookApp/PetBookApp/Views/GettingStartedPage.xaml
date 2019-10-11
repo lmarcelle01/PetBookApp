@@ -5,44 +5,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.GettingStartedPage"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions">
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="Auto" />
-            </Grid.RowDefinitions>
-            <carousel:CarouselViewControl
-                x:Name="Carousel"
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Orientation="Horizontal"
-                Position="0"
-                ShowIndicators="True"
-                CurrentPageIndicatorTintColor="LightGray"
-                IndicatorsTintColor="White"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                PositionSelected="OnCarouselPositionSelected" />
-            <Grid
-                Grid.Row="1"
-                Padding="12"
-                VerticalOptions="EndAndExpand"
-                HorizontalOptions="EndAndExpand"
-                AutomationId="skip">
-                <Label
-                    Text="SKIP"
-                    FontSize="14" TextColor="LightGray">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HomeTabbedPage}">
-                            
-                        </TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-            </Grid>
-        </Grid>
-    </ContentPage.Content>
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+    <ContentView>
+        
+    
+    <ContentView.Content>
+        <carousel:CarouselViewControl x:Name="myCarousel" ItemsSource="{Binding Slides}" CurrentPageIndicatorTintColor="Black"
+                                      IndicatorsTintColor="DarkGray" ShowArrows="False" ShowIndicators="True" 
+                                      VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CarouselBG}">
+            <carousel:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.65*"/>
+                            <RowDefinition Height="0.35*"/>
+                        </Grid.RowDefinitions>
+                        <ContentView x:Name="myImage" Grid.Row="0">
+                            <forms:AnimationView x:Name="LottieAnimation"
+                                                 Animation="{Binding Image}"
+                                                 Loop="True" 
+                                                 AutoPlay="True"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HorizontalOptions="Center"
+                                                 WidthRequest="{Binding Width}"/>
+                        </ContentView>
+                        <ContentView Grid.Row="0" Margin="20">
+                            <Label Text="{Binding Description}" FontAttributes="Bold"
+                               HeightRequest="100" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>
+                        </ContentView>
+                            <ContentView Grid.Row="1">
+                                <Button Text="Finish" Command="{Binding HomeTabbedPage}" 
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        BackgroundColor="DeepPink"
+                                        TextColor="White"
+                                        CornerRadius="25"
+                                        HeightRequest="55"
+                                        WidthRequest="120"
+                                        FontSize="Medium"
+
+                                        IsVisible="{Binding Visible}"/>
+                            </ContentView>
+                        
+                    </Grid>
+                </DataTemplate>
+            </carousel:CarouselViewControl.ItemTemplate>
+        </carousel:CarouselViewControl>
+    </ContentView.Content>
+    </ContentView>
 </ContentPage>
