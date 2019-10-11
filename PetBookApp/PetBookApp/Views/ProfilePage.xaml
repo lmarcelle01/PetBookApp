@@ -16,7 +16,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell 
-                            Text="{Binding Name}">
+                            Text="{Binding Name, StringFormat='Pet Name:{0}'}"
+                            Detail="{Binding Age, StringFormat='Pet Age: {0}'}">
                         </TextCell>
    
                     </DataTemplate>
