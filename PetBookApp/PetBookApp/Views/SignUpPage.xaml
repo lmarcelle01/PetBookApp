@@ -6,15 +6,17 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.SignUpPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Entry Placeholder="Full name" Text="{Binding NewUser.FullName,Mode=TwoWay}"/>
+        <ScrollView>
+            <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="PetBook" FontFamily="{StaticResource AppLogo}" FontSize="Title"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Entry Placeholder="Full name" Margin="0,25,0,0" Text="{Binding NewUser.FullName,Mode=TwoWay}"/>
                 <Entry Placeholder="Username" Text="{Binding NewUser.Alias, Mode=TwoWay}"/>
                 <Entry Placeholder="Password" IsPassword="True" Text="{Binding NewUser.Password, Mode=TwoWay}"/>
                 <Entry Placeholder="Verify password" IsPassword="True" Text="{Binding NewUser.ConfirmPassword, Mode=TwoWay}"/>
-                <Entry Placeholder="Email" Keyboard="Email" Text="{Binding NewUser.Email, Mode=TwoWay}"/>
-                <Button Text="Next" Command="{Binding RegisterUserCommand}"/>
+                <Entry Placeholder="Email" Keyboard="Email" Margin="0,0,0,25" Text="{Binding NewUser.Email, Mode=TwoWay}"/>
+                <Button Text="Next" Command="{Binding RegisterUserCommand}"  Style="{StaticResource ButtonStyle}"/>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

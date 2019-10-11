@@ -22,20 +22,22 @@
                     <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
 
-                <controls:CircleImage Grid.Row="0" Grid.Column="0" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Desenka_meadow_2016_G1.jpg/500px-Desenka_meadow_2016_G1.jpg" WidthRequest="160" HeightRequest="160"></controls:CircleImage>
+               <controls:CircleImage Grid.Row="0" Grid.Column="0" Source="{Binding ImageSource}" WidthRequest="160" HeightRequest="160"></controls:CircleImage>
 
+                <Label Text="{Binding ImageUrl}"></Label>
+                <Button Grid.Row="0" Grid.Column="1" Text="Add Photo" HorizontalOptions="Center" 
+                        VerticalOptions="Center" Style="{StaticResource ButtonStyle}"
+                        Command="{Binding AddProfilePictureCommand}"></Button>
 
-                <Button Grid.Row="0" Grid.Column="1" Text="Add Profile Image" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource ButtonStyle}" ></Button>
-
-                <Entry  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Pet name"></Entry>
-                <Entry  Grid.Row="2" Grid.Column="0" Placeholder="Age" Keyboard="Numeric"></Entry>
-                <Picker Grid.Row="2" Grid.Column="1" Title="Gender">
+                <Entry  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Pet name" Text="{Binding NewPet.Name}"></Entry>
+                <Entry  Grid.Row="2" Grid.Column="0" Placeholder="Age" Keyboard="Numeric" Text="{Binding NewPet.Age}"></Entry>
+                <Picker Grid.Row="2" Grid.Column="1" Title="Gender" SelectedItem="{Binding NewPet.Gender}">
                     <Picker.Items>
                         <x:String>Female</x:String>
                         <x:String>Male</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="About your pet"></Entry>
+                <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="About your pet" Text="{Binding NewPet.About}"></Entry>
                 <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Finish" Command="{Binding AddPetCommand}" Style="{StaticResource ButtonStyle}"></Button>
 
             </Grid>

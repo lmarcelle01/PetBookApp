@@ -31,9 +31,11 @@ namespace PetBookApp.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CarouselViewRenderer.Init();
             AnimationViewRenderer.Init();
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            
             SharpnadoInitializer.Initialize();
             LoadApplication(new App( new AndroidInitializer()));
-            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            
 
         }
 
