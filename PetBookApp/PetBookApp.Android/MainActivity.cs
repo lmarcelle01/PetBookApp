@@ -11,6 +11,7 @@ using Prism.Ioc;
 using CarouselView.FormsPlugin.Android;
 using Lottie.Forms.Droid;
 using Sharpnado.Presentation.Forms.Droid;
+using Plugin.CurrentActivity;
 
 namespace PetBookApp.Droid
 {
@@ -32,16 +33,14 @@ namespace PetBookApp.Droid
             AnimationViewRenderer.Init();
             SharpnadoInitializer.Initialize();
             LoadApplication(new App( new AndroidInitializer()));
-
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
         }
 
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
