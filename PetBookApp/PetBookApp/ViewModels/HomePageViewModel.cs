@@ -11,12 +11,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-
+using PetBookApp.Models;
 
 namespace PetBookApp.ViewModels
 {
     public class HomePageViewModel : BaseViewModel
     {
+        public ObservableCollection<Post> Posts { get; set; } = new ObservableCollection<Post>();
+
         public event EventHandler IsActiveChanged;
 
         protected IPageDialogService _dialogService;
@@ -43,6 +45,18 @@ namespace PetBookApp.ViewModels
                 await DisplayPostActionSheet();
 
             });
+
+            for (int i = 0; i < 5; i++)
+            {
+                var post = new Post();
+                post.PetId = i;
+                post.UserId = (i+1).ToString();
+                if (i % 2 == 0)
+                    post.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Desenka_meadow_2016_G1.jpg/500px-Desenka_meadow_2016_G1.jpg";
+                else
+                    post.ContentText = "Jose tiene un sapito que se llama lolo wuwuwuwuwuwwuwuwuwuwuwuwuwuwuwuwuwuwwuwu";
+                Posts.Add(post);
+            }
 
             //FetchWeather = new DelegateCommand(async () =>
             //{

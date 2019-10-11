@@ -6,13 +6,47 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.HomePage">
     <ContentPage.Content>
-        <StackLayout>
+
+        <ListView 
+            IsPullToRefreshEnabled="True" 
+            HasUnevenRows="True"
+            SeparatorVisibility="Default"      
+            ItemsSource="{Binding Posts}" 
+            SelectedItem="{Binding Post, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame  CornerRadius="15"
+                                Padding="10"
+                                IsClippedToBounds="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding UserId, StringFormat='User: {0}'}"></Label>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding PetId, StringFormat='Pet: {0}'}"></Label>
+                                <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Aspect="Fill" Source="{Binding ImageUrl}"></Image>
+                                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ContentText}" HorizontalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--<StackLayout>
             <Label Text="This is our Home Page currently under construction."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             
             <Button Text="Post something" VerticalOptions="EndAndExpand" Command="{Binding DisplayPostActionSheetCommand}" />
-        </StackLayout>
+        </StackLayout>-->
 
     </ContentPage.Content>
 </ContentPage>
