@@ -16,6 +16,7 @@
             <Button Text="Sign In" Command="{Binding GoToSignInPageCommand}" Style="{StaticResource ButtonStyle}"/>
             <Button Text="Sign Up" Command="{Binding GoToSignUpPageCommand}" Style="{StaticResource ButtonStyle}"
                     Margin="0, 20,0,80"/>
+        
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

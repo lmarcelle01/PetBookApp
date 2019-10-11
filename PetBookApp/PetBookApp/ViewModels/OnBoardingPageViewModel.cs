@@ -5,12 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Plugin.Media.Abstractions;
 
 namespace PetBookApp.ViewModels
 {
     public class OnBoardingPageViewModel : BaseViewModel
     {
-
         public DelegateCommand GoToSignInPageCommand { get; set; }
 
         public DelegateCommand GoToSignUpPageCommand { get; set; }
@@ -26,7 +26,8 @@ namespace PetBookApp.ViewModels
             {
                 await GoToSignUp();
 
-            });
+            });  
+
         }
         async Task GoToSignIn()
         {
@@ -37,6 +38,10 @@ namespace PetBookApp.ViewModels
         {
             await NavigateAsync(Constants.GoToSignUpPage);
         }
+
+
+  
+
 
 
     }
