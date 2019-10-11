@@ -51,6 +51,7 @@ namespace PetBookApp.ViewModels
         public DelegateCommand AddPostCommand { get; set; }
         public PostImagePageViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
+
             MediaHelper = new MediaHelper(dialogService);
             NewPost = new Post();
             _dialogService = dialogService;
@@ -65,6 +66,8 @@ namespace PetBookApp.ViewModels
             {
                 await AddPostAsync();
             });
+            LoadUserPets();
+            
 
         }
 
@@ -127,10 +130,20 @@ namespace PetBookApp.ViewModels
 
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if(Config.GetToken() != null)
+            LoadUserPets();
+        }
+
+        void OnSelectItem(Pet pet)
+        {
+            NewPost.PetId = pet.PetID;
+        }
+
+        async void LoadUserPets()
+        {
+            if (Config.GetToken() != null)
             {
-               UserPets = await ApiService.GetUserPetsAsync(Config.GetToken().UserId);
-               if(UserPets.Count <= 0)
+                UserPets = await ApiService.GetUserPetsAsync(Config.GetToken().UserId);
+                if (UserPets.Count <= 0)
                 {
                     await _dialogService.DisplayAlertAsync("You don't have pets", "Please add a pet to post with", "Ok");
                     await NavigateAsync(Constants.GoToAddPetPage);
@@ -141,11 +154,6 @@ namespace PetBookApp.ViewModels
                 await _dialogService.DisplayAlertAsync("You're not signed in", "Please sign in again", "Ok");
                 await NavigateAsync(Constants.GoToSignInPage);
             }
-        }
-
-        void OnSelectItem(Pet pet)
-        {
-            NewPost.PetId = pet.PetID;
         }
 
     }
