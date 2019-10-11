@@ -7,11 +7,27 @@
              x:Class="PetBookApp.Views.ProfilePage">
     <ContentPage.Content>
         <StackLayout>
+            <ListView 
+            IsPullToRefreshEnabled="True" 
+            HasUnevenRows="True"
+            SeparatorVisibility="Default"      
+            ItemsSource="{Binding Pets}" 
+            SelectedItem="{Binding Pet, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell 
+                            Text="{Binding Name}">
+                        </TextCell>
+   
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
             <Label Text="This is Profile Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Settings" Command="{Binding GoToSettingsCommand}"></Button>
-            <Button Text="Add Pet" Command="{Binding GoToAddPetCommand}"></Button>
+            <Button Text="Settings" Style="{StaticResource ButtonStyle}" Command="{Binding GoToSettingsCommand}" ></Button>
+            <Button Text="Add Pet" Style="{StaticResource ButtonStyle}" Command="{Binding GoToAddPetCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
