@@ -8,9 +8,9 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label Text="PETBOOK" FontAttributes="Bold" FontSize="Title"/>
-            <Entry Placeholder="Username"/>
-            <Entry Placeholder="Password" IsPassword="True"/>
-            <Button Text="Sign in" Command="{Binding GoToHomeTabbedCommand}"/>
+            <Entry Placeholder="Email" Text="{Binding User.Email}"/>
+            <Entry Placeholder="Password" IsPassword="True" Text="{Binding User.Password}"/>
+            <Button Text="Sign in" Command="{Binding LogInCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
