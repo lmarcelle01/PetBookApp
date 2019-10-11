@@ -57,6 +57,7 @@ namespace PetBookApp.ViewModels
             {
                 NewPet.UserId = currentUserToken.UserId;
                 await ApiService.AddPetAsync(NewPet);
+                await _dialogService.DisplayAlertAsync("Yay!", "Pet added sucessfully", "Ok");
             }
             else
             {

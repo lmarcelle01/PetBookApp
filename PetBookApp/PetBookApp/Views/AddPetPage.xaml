@@ -29,15 +29,15 @@
                         VerticalOptions="Center" Style="{StaticResource ButtonStyle}"
                         Command="{Binding AddProfilePictureCommand}"></Button>
 
-                <Entry  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Pet name"></Entry>
-                <Entry  Grid.Row="2" Grid.Column="0" Placeholder="Age" Keyboard="Numeric"></Entry>
-                <Picker Grid.Row="2" Grid.Column="1" Title="Gender">
+                <Entry  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Pet name" Text="{Binding NewPet.Name}"></Entry>
+                <Entry  Grid.Row="2" Grid.Column="0" Placeholder="Age" Keyboard="Numeric" Text="{Binding NewPet.Age}"></Entry>
+                <Picker Grid.Row="2" Grid.Column="1" Title="Gender" SelectedItem="{Binding NewPet.Gender}">
                     <Picker.Items>
                         <x:String>Female</x:String>
                         <x:String>Male</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="About your pet"></Entry>
+                <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="About your pet" Text="{Binding NewPet.About}"></Entry>
                 <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Finish" Command="{Binding AddPetCommand}" Style="{StaticResource ButtonStyle}"></Button>
 
             </Grid>
