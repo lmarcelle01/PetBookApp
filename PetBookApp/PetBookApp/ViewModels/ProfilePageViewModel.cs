@@ -52,9 +52,6 @@ namespace PetBookApp.ViewModels
             await NavigateAsync(Constants.GoToAddPetPage);
         }
 
-        //async void SelectTab(object parameters)
-        //{
-        //    var result = await base.SelectTab("HOME");
-        //}
+        
     }
 }

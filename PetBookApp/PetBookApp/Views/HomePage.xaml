@@ -40,13 +40,5 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!--<StackLayout>
-            <Label Text="This is our Home Page currently under construction."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            
-            <Button Text="Post something" VerticalOptions="EndAndExpand" Command="{Binding DisplayPostActionSheetCommand}" />
-        </StackLayout>-->
-
     </ContentPage.Content>
 </ContentPage>
