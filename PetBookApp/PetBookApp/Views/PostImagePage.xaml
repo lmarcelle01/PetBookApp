@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PetBookApp.Views.PostImagePage">
     <ContentPage.Content>
-        <StackLayout Margin="10">
+        <StackLayout HorizontalOptions="StartAndExpand" Margin="10">
             <Label Text="Select a pet to post with:" FontSize="Title"></Label>
             <ListView HeightRequest="20" ItemsSource="{Binding UserPets}"
                   x:Name="listv"

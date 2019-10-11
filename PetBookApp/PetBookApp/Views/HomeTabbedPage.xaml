@@ -11,6 +11,7 @@
             >
     <TabbedPage.Children>
         <local:HomePage IconImageSource="home.png"/>
+        <local:PostImagePage Title="POST"></local:PostImagePage>
         <local:ProfilePage IconImageSource="user.png"/>
     </TabbedPage.Children>
 </TabbedPage>
