@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace PetBookApp.ViewModels
 {
@@ -15,6 +16,7 @@ namespace PetBookApp.ViewModels
 
         public DelegateCommand RegisterUserCommand { get; set; }
         public User NewUser { get; set; }
+        public bool IsBusy { get; set; }
 
         public IAuthenticationApi apiService;
         public IPetbookApi PetbookApi;
@@ -32,18 +34,48 @@ namespace PetBookApp.ViewModels
 
         async Task RegisterUser()
         {
-            NewUser.ProfileImageUrl = "";
-            await apiService.RegisterUserAsync(NewUser);
 
-            var userData = new List<KeyValuePair<string, string>>
+            try
             {
-                new KeyValuePair<string, string>("UserName", NewUser.Email),
-                new KeyValuePair<string, string>("password", NewUser.Password),
-                new KeyValuePair<string, string>("grant_type", "password")
-            };
-            Token getToken = await apiService.Login(userData);
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
 
-            await NavigateAsync(Constants.GoToAddPetPage);
+                    IsBusy = true;
+                    NewUser.ProfileImageUrl = "";
+                    await apiService.RegisterUserAsync(NewUser);
+
+                    var userData = new List<KeyValuePair<string, string>>
+                    {
+                        new KeyValuePair<string, string>("UserName", NewUser.Email),
+                        new KeyValuePair<string, string>("password", NewUser.Password),
+                        new KeyValuePair<string, string>("grant_type", "password")
+                    };
+
+                    if(IsBusy)
+                    {
+                        IsBusy = false;
+                        await apiService.Login(userData);
+                    }
+                    await NavigateAsync(Constants.GoToAddPetPage);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You don't have internet connection", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Unable to connect to the server", "Ok");
+            }
+            
+           
+
+           
+
+   
+           
+           
 
         }
        
