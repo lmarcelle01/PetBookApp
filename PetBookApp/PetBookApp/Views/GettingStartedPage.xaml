@@ -13,7 +13,7 @@
     <ContentView.Content>
         <carousel:CarouselViewControl x:Name="myCarousel" ItemsSource="{Binding Slides}" CurrentPageIndicatorTintColor="Black"
                                       IndicatorsTintColor="DarkGray" ShowArrows="False" ShowIndicators="True" 
-                                      VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="DarkMagenta"{Binding CarouselBG}">
+                                      VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CarouselBG}">
             <carousel:CarouselViewControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
